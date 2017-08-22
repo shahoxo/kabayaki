@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require "kabayaki"
+require "kabayaki/command"
+APP_PATH = File.expand_path './config/application'
+
+aliases = {
+  "g"  => "generate",
+  "c"  => "console",
+  "s"  => "server",
+}
+
+command = ARGV.shift
+command = aliases[command] || command
+
+Kabayaki::Command.start([ command, *ARGV ])
